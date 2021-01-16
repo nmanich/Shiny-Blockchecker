@@ -7,6 +7,13 @@
 #    http://shiny.rstudio.com/
 #
 
+#To-do
+# Merge in actual block names (easy through postgres table merge)
+# Cut to certain columns (easy through postgres export)
+# add html code and ebird link to obsid (need to do bulk in R)
+# figure out hosting
+
+
 library(shiny)
 library(data.table) #for fread
 
