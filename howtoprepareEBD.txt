@@ -1,0 +1,13 @@
+To prepare EBD eBird download file for use with Blockchecker Shiny app
+
+(I’m writing these directions for me, where I intend to use postgres to export. If the file is small you can ignore this entirely, just prepare it in excel with the proper columns based on the example csv.)
+
+1. From postgres, export a csv with 2 columns: the sampling event identifier, and global unique identifier.
+
+2. Run R-script called convert subid to URL.
+
+3. Step 2 produces a csv that can be merged into the postgres database.
+
+4. Merge in the names of the blocks to postgres.
+
+5. Export the columns for shiny in the correct order from postgres.
