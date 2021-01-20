@@ -23,9 +23,7 @@ setnames(subidtable, "SAMPLINGEVENTIDENTIFIER", "SAMPLING EVENT IDENTIFIER")
 
 #Select columns for export:
 #Select all columns and only the rows you want:
-export <- subidtable[, c("SAMPLING EVENT IDENTIFIER","ChecklistLink")]
+export <- subidtable[, c("GLOBAL UNIQUE IDENTIFIER","ChecklistLink")]
 
 #Then export:
-write.csv(export, file= "subids_with_url5.csv")
-#export obsid and URL
-
+write.csv(export, file= "subids_with_url7.csv", row.names=FALSE)
