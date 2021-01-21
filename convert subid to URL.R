@@ -1,29 +1,24 @@
 #make URL link for Shiny table
 #turns ebird subid into a clickable html URL
 
-library(data.table) 
+subidtable <- read.delim("ebd_US-WI_201501_201912_relDec-2020.txt", sep="\t", header=TRUE, quote = "", stringsAsFactors = FALSE, na.strings=c(""))
 
-subidtable <- fread("shinytest.csv")
-
-#rename column
-setnames(subidtable, "SAMPLING EVENT IDENTIFIER", "SAMPLINGEVENTIDENTIFIER")
+#keep only unique subids
+subidunique <- subidtable[!duplicated(subidtable$SAMPLING.EVENT.IDENTIFIER), ]
 
 # Add new columns 
-subidtable$front <- '<a href="https://ebird.org/checklist/'
+subidunique$front <- '<a href="https://ebird.org/checklist/'
 
-subidtable$middle <- '/" target="_blank">https://ebird.org/checklist/'
+subidunique$middle <- '/" target="_blank">https://ebird.org/checklist/'
 
-subidtable$back <- '</a>'
+subidunique$back <- '</a>'
 
 # concatenate into eBird URL
-subidtable$ChecklistLink <-  with(subidtable, paste0(front, SAMPLINGEVENTIDENTIFIER, middle, SAMPLINGEVENTIDENTIFIER, back))
-
-#rename column back
-setnames(subidtable, "SAMPLINGEVENTIDENTIFIER", "SAMPLING EVENT IDENTIFIER")
+subidunique$ChecklistLink <-  with(subidunique, paste0(front, SAMPLING.EVENT.IDENTIFIER, middle, SAMPLING.EVENT.IDENTIFIER, back))
 
 #Select columns for export:
 #Select all columns and only the rows you want:
-export <- subidtable[, c("GLOBAL UNIQUE IDENTIFIER","ChecklistLink")]
+export <- subidunique[, c("SAMPLING.EVENT.IDENTIFIER","ChecklistLink")]
 
 #Then export:
-write.csv(export, file= "subids_with_url7.csv", row.names=FALSE)
+write.csv(export, file= "subids_with_url9.csv", row.names=FALSE)
