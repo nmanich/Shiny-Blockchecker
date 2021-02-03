@@ -13,7 +13,7 @@ library(data.table) #for fread
 df <- fread("test3.csv")
 
 #fixes issues with double quotes during import
-df[, checklistlink := gsub('\"', '\'', checklistlink)]
+df[, checklistlink := gsub('\"\"', '\'', checklistlink)]
 
 # Define UI for block dropdowns
 ui <- fluidPage(
