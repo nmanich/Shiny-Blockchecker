@@ -34,10 +34,10 @@ ui <- fluidPage(
                          unique(as.character(df$common_name))))
     ),
     column(4,
-           selectInput("breeding_bird_atlas_category",
+           selectInput("breeding_category",
                        "Code Category:",
                        c("All",
-                         unique(as.character(df$breeding_bird_atlas_category))))
+                         unique(as.character(df$breeding_category))))
     ),
     
     column(4,
@@ -72,7 +72,7 @@ server <- function(input, output) {
       ids <- ids & df$common_name == input$common_name
     }
     if (input$breeding_bird_atlas_category != "All") {
-      ids <- ids & df$breeding_bird_atlas_category == input$breeding_bird_atlas_category
+      ids <- ids & df$breeding_category == input$breeding_category
     }
     if (input$project_code != "All") {
       ids <- ids & df$project_code == input$project_code
