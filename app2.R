@@ -10,7 +10,7 @@ library(shiny)
 library(data.table) #for fread
 
 # Load in database
-df <- fread("dataforshiny.csv")
+df <- fread("test3.csv")
 
 #fixes issues with double quotes during import
 df[, checklistlink := gsub('\"\"', '\'', checklistlink)]
