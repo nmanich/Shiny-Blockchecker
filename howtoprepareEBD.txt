@@ -2,14 +2,10 @@ To prepare EBD eBird download file for use with Blockchecker Shiny app
 
 (I’m writing these directions for me, where I intend to use postgres to export. If the file is small you can ignore this entirely, just prepare it in excel with the proper columns based on the example csv.)
 
-1. Load in the EBD data, full file is fine though subid is really all you need. (This is already written as the first line of code for step 2)
+1. Run R-script called convert_subid_to_URL, which loads in the EBD data and spits out a csv file with unique subids as clickable URLs.
 
-2. Run R-script called convert subid to URL.
+2. Output csv from Step 1 can be merged into the postgres database to join it to the EBD.  Use sql_for_shiny.sql if you wish (or done with R or manually). Basically you are merging in the URL column we made, also merging in a column with block names, and exporting it out in the correct order (see test3.csv for the product you need if you want to do this manually).
 
-3. Step 2 produces a csv that can be merged into the postgres database.
+3. Load in output from step 2 and convert all non-atlas portals to a single name (using Portal consolidation.R).
 
-4. Merge in the subid url and names of blocks to postgres.
-
-5. Export the columns for shiny in the correct order from postgres.
-
-6. Convert all non-atlas portals to a single name. 
+4. Use the output file from step 3 to run in the shiny app (called app2.R).
