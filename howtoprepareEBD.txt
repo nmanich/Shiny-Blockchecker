@@ -2,7 +2,7 @@ To prepare EBD eBird download file for use with Blockchecker Shiny app
 
 (I’m writing these directions for me, where I intend to use postgres to export. If the file is small you can ignore this entirely, just prepare it in excel with the proper columns based on the example csv.)
 
-1. Load in the EBD data, full file is fine though subid is really all you need.
+1. Load in the EBD data, full file is fine though subid is really all you need. (This is already written as the first line of code for step 2)
 
 2. Run R-script called convert subid to URL.
 
