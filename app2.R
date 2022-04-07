@@ -71,7 +71,7 @@ server <- function(input, output) {
     if (input$common_name != "All") {
       ids <- ids & df$common_name == input$common_name
     }
-    if (input$breeding_bird_atlas_category != "All") {
+    if (input$breeding_category != "All") {
       ids <- ids & df$breeding_category == input$breeding_category
     }
     if (input$project_code != "All") {
